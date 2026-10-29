@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6f5ef">
+  <meta name="description" content="Step into Niki's neighborhood. A little 3D city of urban research, thoughtful design, community, sport, and the performing arts.">
+  <title>Niki's Neighborhood — A little city. A lot of Niki.</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='12' fill='%23df7d61'/%3E%3Ctext x='20' y='29' font-size='29' font-family='Georgia' text-anchor='middle' fill='white'%3En%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="./style.css">
+  <script type="importmap">{"imports":{"three":"./vendor/three.module.js"}}</script>
+</head>
+<body>
+  <div class="site-shell">
+    <header class="header">
+      <a class="wordmark" href="#" aria-label="Niki's Neighborhood home"><span class="brand-symbol">n<span>✳</span></span><span>NIKI'S<br><b>NEIGHBORHOOD</b></span></a>
+      <nav aria-label="Main navigation"><button class="nav-item active" id="nav-explore">The neighborhood <span class="nav-dot"></span></button><button class="nav-item" id="nav-index">All experiences <span class="small-arrow">↗</span></button></nav>
+      <button class="about-button" id="about-button">Meet Niki <span>↗</span></button>
+    </header>
+    <main>
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="eyebrow"><span></span> WELCOME TO MY LITTLE WORLD</p>
+          <h1 id="hero-title">A little city.<br>A lot of <em>Niki.</em></h1>
+          <p class="hero-description">Every building, a different chapter.<br>A place for the things I make,<br>the people I meet, and all that moves me.</p>
+          <button class="primary-button" id="explore-button">Take a little tour <span>↗</span></button>
+          <div class="hand-note"><svg width="38" height="39" viewBox="0 0 38 39" fill="none" aria-hidden="true"><path d="M3 3C6 22 17 28 32 28M24 20L34 29L24 35" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Big curiosities.<br>Small buildings.</span></div>
+        </div>
+        <div class="city-stage" id="city-stage" aria-label="Interactive 3D city of Niki's experiences">
+          <div id="city-canvas"></div>
+          <div class="city-loader" id="city-loader"><div class="loader-houses"><i></i><i></i><i></i></div><span>A little world is taking shape…</span></div>
+          <div class="city-tooltip" id="city-tooltip" hidden></div>
+          <div class="scene-caption"><span class="live-dot"></span> A WORLD IN THE MAKING <span class="caption-line"></span> NIKI LIU</div>
+          <div class="city-instructions"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M8 11V5a2 2 0 0 1 4 0v6m0-3a2 2 0 0 1 4 0v4m0-2a2 2 0 0 1 4 0v5c0 5-3 7-7 7-3 0-5-2-7-5l-3-5c-1-2 2-3 3-1l2 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg><span>Drag to wander <i>·</i> Click a building to explore</span></div>
+          <div class="view-controls" aria-label="City controls"><button id="reset-view" aria-label="Reset city view" title="Reset view">↺</button><span></span><button id="zoom-in" aria-label="Zoom in" title="Zoom in">+</button><button id="zoom-out" aria-label="Zoom out" title="Zoom out">−</button><span></span><button id="pause-motion" aria-label="Pause animation" aria-pressed="false" title="Pause animation">Ⅱ</button></div>
+        </div>
+      </section>
+      <section class="districts" aria-labelledby="district-title">
+        <div class="district-heading"><h2 id="district-title">CHOOSE A NEIGHBORHOOD</h2><p>Six places. A thousand little connections.</p><span>01 — 06</span></div>
+        <div class="district-grid" id="district-grid"></div>
+      </section>
+    </main>
+    <footer><span>Built from curiosity, care & a little imagination.</span><span class="footer-right"><span class="tiny-flower">✳</span> STILL EXPLORING. ALWAYS.</span></footer>
+  </div>
+  <dialog id="detail-dialog" class="detail-dialog" aria-labelledby="detail-title"><div id="detail-content"></div></dialog>
+  <dialog id="index-dialog" class="index-dialog" aria-labelledby="index-title"><div class="index-header"><div><p class="eyebrow">THE DIRECTORY</p><h2 id="index-title">Every chapter, in one place.</h2></div><button class="close-button" data-close="index-dialog" aria-label="Close directory">×</button></div><div class="index-tools"><label class="search-field"><span>⌕</span><input id="project-search" type="search" placeholder="Find a project, passion, or place…" aria-label="Search experiences"></label><div id="index-filters" class="index-filters"></div></div><div id="index-results" class="index-results"></div></dialog>
+  <dialog id="lightbox" class="lightbox" aria-label="Photo viewer"><button class="close-button" data-close="lightbox" aria-label="Close photo">×</button><button id="photo-prev" class="photo-nav prev" aria-label="Previous photo">←</button><figure><img id="lightbox-image" src="" alt=""><figcaption id="lightbox-caption"></figcaption></figure><button id="photo-next" class="photo-nav next" aria-label="Next photo">→</button></dialog>
+  <div class="sr-only" id="announcer" aria-live="polite"></div>
+  <script type="module" src="./app.js"></script>
+</body>
+</html>
