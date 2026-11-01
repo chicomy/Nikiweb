@@ -1,0 +1,53 @@
+{
+  "name": "football-pitch",
+  "blender_bounds": {
+    "x": [
+      -4.099999904632568,
+      4.099999904632568
+    ],
+    "y": [
+      -2.758000135421753,
+      2.75
+    ],
+    "z": [
+      0.0,
+      1.5927975177764893
+    ]
+  },
+  "gltf_bounds": {
+    "x": [
+      -4.099999904632568,
+      4.099999904632568
+    ],
+    "y": [
+      0.0,
+      1.5927975177764893
+    ],
+    "z": [
+      -2.75,
+      2.758000135421753
+    ]
+  },
+  "triangles": 9292,
+  "meshes": 12,
+  "materials": [
+    "Steel.002",
+    "Trim.002",
+    "Lawn.002",
+    "Putting Turf.002",
+    "Fairway.002",
+    "Ivory.002",
+    "White.002",
+    "Skin",
+    "Jersey Blue",
+    "Hair",
+    "Jersey Coral",
+    "Orange.002"
+  ],
+  "sport": "football",
+  "original_to_gltf_offset": [
+    0,
+    0,
+    0
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "verified_from": "Reimported current exported GLBs in Blender 5.2.2; source-coordinate clearance checks for seated knees",
+  "units": "Blender model units, before runtime fitting",
+  "checks": {
+    "bow_piano": {
+      "bow_max_x": 0.20000004768371582,
+      "piano_min_x": 0.55,
+      "clearance": 0.3499999523162842
+    },
+    "playhouse_rear_wall": {
+      "wall_radius": 3.150000159598594,
+      "roof_radius": 3.38,
+      "radial_clearance": 0.22999984040140609
+    },
+    "scroll_inkstone": {
+      "inkstone_front_y": -1.5999997854232788,
+      "scroll_roll_back_y": -1.7000000476837158,
+      "clearance": 0.10000026226043701
+    }
+  },
+  "studio_preview": "Rendered and visually inspected after changes"
+}

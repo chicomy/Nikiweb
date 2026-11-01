@@ -1,0 +1,54 @@
+{
+  "name": "learning-garden",
+  "blender_bounds": {
+    "x": [
+      -4.0,
+      4.0
+    ],
+    "y": [
+      -3.5,
+      3.5
+    ],
+    "z": [
+      0.0,
+      4.0
+    ]
+  },
+  "gltf_bounds": {
+    "x": [
+      -4.0,
+      4.0
+    ],
+    "y": [
+      0.0,
+      4.0
+    ],
+    "z": [
+      -3.5,
+      3.5
+    ]
+  },
+  "triangles": 37481,
+  "meshes": 19,
+  "materials": [
+    "Forest.002",
+    "Ivory.002",
+    "Blue.002",
+    "Gold.002",
+    "Coral.002",
+    "Stone Light.002",
+    "Grass.002",
+    "Cream.002",
+    "Wood.002",
+    "Paper.002",
+    "Glass.002",
+    "Ink.002",
+    "Skin.002",
+    "Hair.002",
+    "Rose.002",
+    "Clay Light.002",
+    "Clay.002",
+    "Leaf.002",
+    "Leaf Light.002"
+  ]
+}

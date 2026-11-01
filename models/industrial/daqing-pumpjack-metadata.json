@@ -1,0 +1,27 @@
+{
+  "name": "daqing-pumpjack",
+  "gltf_bounds": {
+    "x": [
+      -4.449999809265137,
+      4.449999809265137
+    ],
+    "y": [
+      0.0,
+      5.280157566070557
+    ],
+    "z": [
+      -3.4000000953674316,
+      3.4000000953674316
+    ]
+  },
+  "triangles": 20598,
+  "meshes": 27,
+  "moving_nodes": [
+    "pump_beam",
+    "pump_crank_front",
+    "pump_pitman_front",
+    "pump_crank_back",
+    "pump_pitman_back",
+    "pump_polished_rod"
+  ]
+}

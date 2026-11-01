@@ -1,0 +1,32 @@
+{
+  "reference": "resource/niki23\u53f7\u5206\u4eab\u7684\u8d44\u6599/candle1.jpg",
+  "model": "EURUS winter botanical pine candle",
+  "dimensions": {
+    "width": 4.2,
+    "height": 5.9,
+    "depth": 4.2
+  },
+  "meshes": 16,
+  "triangles": 67084,
+  "materials": [
+    "Botanical \u2014 leaf veins",
+    "Botanical \u2014 preserved leaf",
+    "Display \u2014 brushed brass",
+    "Display \u2014 warm stone",
+    "Dots Stroke",
+    "Frost \u2014 sugar snow",
+    "Glass \u2014 clear vessel",
+    "Glass \u2014 polished rim",
+    "Material",
+    "Tag \u2014 cotton cord",
+    "Tag \u2014 forest ink",
+    "Tag \u2014 ivory card",
+    "Wax \u2014 deep sage",
+    "Wax \u2014 pale sage",
+    "Wax \u2014 pine green",
+    "Wax \u2014 soft sage",
+    "Wax \u2014 warm ivory",
+    "Wick \u2014 cotton tip"
+  ],
+  "notes": "Blender hand-built geometric reconstruction from a single product photograph; no flame. GLB uses closed glass with physical transmission, fluted wax, botanical inclusions, frost, label and cord."
+}

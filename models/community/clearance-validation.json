@@ -1,0 +1,28 @@
+{
+  "verified_from": "Reimported current exported GLBs in Blender 5.2.2; source-coordinate clearance checks for seated knees",
+  "units": "Blender model units, before runtime fitting",
+  "checks": {
+    "reading_roof_support": [
+      {
+        "x": -2.95,
+        "post_top": 3.576709455677612,
+        "roof_underside": 3.5767886638641357,
+        "gap": 7.920818652396022e-05
+      },
+      {
+        "x": 1.65,
+        "post_top": 3.5767094556776113,
+        "roof_underside": 3.5767884254455566,
+        "gap": 7.896976794530275e-05
+      }
+    ],
+    "seated_knee_clearance": {
+      "civic": 0.049,
+      "care_blue": 0.0438,
+      "care_rose": 0.0406,
+      "reading_stools": 0.018,
+      "reading_feet_to_stool_edge": 0.00975
+    }
+  },
+  "studio_preview": "Rendered and visually inspected after changes"
+}

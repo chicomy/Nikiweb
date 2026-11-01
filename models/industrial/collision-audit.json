@@ -1,0 +1,16 @@
+{
+  "phases": 360,
+  "rodXError": 0,
+  "rodBottomMin": 0.7999999999999998,
+  "rodBottomMax": 0.8000000000000003,
+  "crankBaseClearance": 0.045134847990042526,
+  "beamFrameDepthClearance": 0.11500001192092896,
+  "pitmanFrameDepthClearance": 0.12782027711094768,
+  "crankHousingDepthClearance": 0.12500002384185793,
+  "motorEndplateClearance": 0.0994352735782626,
+  "bridleEndpointError": 5.311767472816653e-16,
+  "visorTriangles": 6016,
+  "visorFoldedTriangles": 0,
+  "gatewayFootOpening": 7.75,
+  "gatewayRoadClearHeight": 4.769999980926514
+}

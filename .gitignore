@@ -1,0 +1,23 @@
+.DS_Store
+.wrangler/
+node_modules/
+__pycache__/
+.env
+.env.*
+.dev.vars
+.dev.vars.*
+media/backup/
+
+# Local packages, previews, and production notes.
+/*.zip
+/*-preview.jpg
+/progress.md
+*.log
+*.blend
+*.blend1
+/models/**/*-preview.png
+/models/**/references/
+/models/**/clearance-audit-output.txt
+
+# Original-media inventories are local authoring inputs.
+/media/source-*.json

@@ -1,0 +1,51 @@
+{
+  "name": "stanford-campus",
+  "blender_bounds": {
+    "x": [
+      -10.5,
+      10.5
+    ],
+    "y": [
+      -8.199999809265137,
+      8.0
+    ],
+    "z": [
+      0.0,
+      10.699999809265137
+    ]
+  },
+  "gltf_bounds": {
+    "x": [
+      -10.5,
+      10.5
+    ],
+    "y": [
+      0.0,
+      10.699999809265137
+    ],
+    "z": [
+      -8.0,
+      8.199999809265137
+    ]
+  },
+  "triangles": 54261,
+  "meshes": 16,
+  "materials": [
+    "Stone Dark",
+    "Paving",
+    "Grass Edge",
+    "Lawn",
+    "Sandstone",
+    "Roof Clay",
+    "Roof Light",
+    "Roof Shade",
+    "Stone Light",
+    "Stone Trim",
+    "Glass Dark",
+    "Brass",
+    "Mosaic Blue",
+    "Mosaic Rose",
+    "Palm Trunk",
+    "Palm Leaf"
+  ]
+}

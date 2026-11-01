@@ -1,0 +1,53 @@
+{
+  "name": "hp-garage",
+  "blender_bounds": {
+    "x": [
+      -3.450000047683716,
+      3.450000047683716
+    ],
+    "y": [
+      -3.75,
+      4.349999904632568
+    ],
+    "z": [
+      0.0,
+      3.9649999141693115
+    ]
+  },
+  "gltf_bounds": {
+    "x": [
+      -3.450000047683716,
+      3.450000047683716
+    ],
+    "y": [
+      0.0,
+      3.9649999141693115
+    ],
+    "z": [
+      -4.349999904632568,
+      3.75
+    ]
+  },
+  "triangles": 13110,
+  "meshes": 18,
+  "materials": [
+    "Stone Dark",
+    "Grass Edge",
+    "Gravel",
+    "Cedar",
+    "Cedar Light",
+    "Cedar Shade",
+    "Roof Cedar",
+    "Green Trim",
+    "Door Green",
+    "Iron",
+    "Workshop Wood",
+    "Oscillator",
+    "Stone Light",
+    "Glass Dark",
+    "Ivory",
+    "Paving",
+    "Brass",
+    "Lawn"
+  ]
+}

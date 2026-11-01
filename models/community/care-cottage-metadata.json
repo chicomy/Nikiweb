@@ -1,0 +1,56 @@
+{
+  "name": "care-cottage",
+  "blender_bounds": {
+    "x": [
+      -4.0,
+      4.0
+    ],
+    "y": [
+      -3.5,
+      3.5
+    ],
+    "z": [
+      0.0,
+      5.039999961853027
+    ]
+  },
+  "gltf_bounds": {
+    "x": [
+      -4.0,
+      4.0
+    ],
+    "y": [
+      0.0,
+      5.039999961853027
+    ],
+    "z": [
+      -3.5,
+      3.5
+    ]
+  },
+  "triangles": 36963,
+  "meshes": 21,
+  "materials": [
+    "Forest.001",
+    "Stone Light.001",
+    "Grass.001",
+    "Cream.001",
+    "Stone.001",
+    "Ivory.001",
+    "Clay.001",
+    "Clay Light.001",
+    "Clay Shade.001",
+    "Ink.001",
+    "Rose.001",
+    "Coral.001",
+    "Glass.001",
+    "Gold.001",
+    "Wood.001",
+    "Leaf.001",
+    "Leaf Light.001",
+    "Blue.001",
+    "Skin.001",
+    "Hair.001",
+    "Paper.001"
+  ]
+}
