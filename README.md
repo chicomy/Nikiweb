@@ -4,6 +4,8 @@ An independent, desktop-first Three.js portfolio. Explore a miniature of Palo Al
 
 Live website: [niki.ing](https://niki.ing). Source repository: [chicomy/Nikiweb](https://github.com/chicomy/Nikiweb).
 
+The current homepage is **Niki's Sea**, the island portfolio in `sea/`. Run `python3 sea/dev-server.py` and open http://127.0.0.1:4175/sea/ for local preview, including **Edit text** and saving to `sea/text-edits.json`. The editor is hidden on public hosts. The city version described below remains in `dist/` and supplies shared models, media, fonts and libraries to the sea.
+
 The repository includes the complete website in `dist/`, Cloudflare deployment configuration, a local preview server, and model-generation scripts. Original source media, media inventories, editable `.blend` files, backups, build logs, and preview renders remain local authoring materials; they are not required to run or deploy the website. The model-generation scripts can recreate the editable Blender scenes.
 
 ## Run locally
@@ -92,7 +94,7 @@ The `dist` folder is a complete static site and can be served by any static web 
 
 ## Cloudflare deployment
 
-Production domain: **https://niki.ing**. `wrangler.jsonc` configures the `niki-world` Cloudflare Worker to serve only `dist/` and attach the domain with Cloudflare-managed HTTPS. No application build step is needed. `cloudflare-worker.js` adds HTTP byte-range support for MP4 videos through Cloudflare's Cache API, using each asset's ETag to prevent stale video content after an update. Other site assets are served directly. Video-path requests use the account's Workers request allowance.
+Production domain: **https://niki.ing**. `wrangler.jsonc` configures the `niki-world` Cloudflare Worker and its custom domain. Before deployment, Wrangler runs `python3 build-cloudflare.py`: this copies the sea website to the root of the ignored `.cloudflare-assets/` directory and includes `dist/` beneath it for shared resources. Only that generated directory is uploaded. Python 3 is required for this packaging step; no JavaScript build or package installation is needed. `cloudflare-worker.js` adds HTTP byte-range support to both `/assets/videos/*` and `/dist/assets/media/videos/*` through Cloudflare's Cache API, using each asset's ETag to prevent stale video content after an update. Other site assets are served directly. Video-path requests use the account's Workers request allowance.
 
 To deploy an update from this project directory with Node.js installed:
 
@@ -105,7 +107,9 @@ The login command is only needed when no valid Cloudflare session is available. 
 
 Each published file must remain below Cloudflare's 25 MiB static asset limit. `council-film-02.mp4` has a deployment-sized H.264 derivative with its original duration, resolution and audio preserved; its previous web derivative is retained in the ignored `media/backup/` directory. Wrangler checks file sizes before uploading. Videos load on demand and use HTTP byte ranges for seeking.
 
-Deployment on 2026-11-02 (Asia/Shanghai): version `55d9d239-a09f-4f35-8145-4279d4b87292`. Backup address: https://niki-world.pathfive.workers.dev. Twelve local HTTP checks passed, including prefix/suffix/open-ended ranges, range bounds, conditional requests, HEAD, homepage and 404 behavior. Production returned the exact requested 1 KiB video slice with HTTP 206 on both hostnames; the custom-domain check used its published Cloudflare IP because local DNS/connection checks were intermittent. Full browser interaction verification was limited by preview-tool timeouts.
+Sea deployment on 2026-11-12 (Asia/Shanghai): version `0a6d49bb-ea9f-47b9-9846-7be8d09cc0d7`. The homepage is now Niki's Sea. Backup address: https://niki-world.pathfive.workers.dev. Fourteen local and sixteen production HTTP checks passed, covering byte-identical HTML, scripts, styles, font, images and a GLB, both video paths returning the exact requested 1 KiB with HTTP 206, expected 404 responses, and the backup homepage. Full browser interaction verification was limited by preview-tool timeouts.
+
+Previous city deployment on 2026-11-02 (Asia/Shanghai): version `55d9d239-a09f-4f35-8145-4279d4b87292`.
 
 ## Rebuilding Blender models
 

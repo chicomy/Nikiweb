@@ -1,5 +1,6 @@
 .DS_Store
 .wrangler/
+/.cloudflare-assets/
 node_modules/
 __pycache__/
 .env

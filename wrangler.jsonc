@@ -5,10 +5,13 @@
   "compatibility_date": "2026-09-10",
   "workers_dev": true,
   "preview_urls": false,
+  "build": {
+    "command": "python3 build-cloudflare.py"
+  },
   "assets": {
-    "directory": "./dist",
+    "directory": "./.cloudflare-assets",
     "binding": "ASSETS",
-    "run_worker_first": ["/assets/media/videos/*"],
+    "run_worker_first": ["/assets/videos/*", "/dist/assets/media/videos/*"],
     "not_found_handling": "404-page"
   },
   "routes": [
