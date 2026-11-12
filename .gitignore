@@ -21,3 +21,13 @@ media/backup/
 
 # Original-media inventories are local authoring inputs.
 /media/source-*.json
+
+# Original photos include other people; only the cropped stickers in sea/assets are used.
+/my face/
+
+# Private reference material, including a resume with personal contact details.
+/refernces/
+
+# Dated working copies of sea/ kept as local backups, and leftover temp files from interrupted writes.
+/sea-before-*/
+*.sb-*
