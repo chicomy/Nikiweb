@@ -16,6 +16,7 @@ import {createPhotoWall} from './photo-wall.js';
 import {createTour} from './tour.js';
 import {createArrangement} from './layout.js';
 import {createTextEditor, applyTextEdits} from './text-editor.js';
+import {createGallery} from './gallery.js';
 
 const $ = s => document.querySelector(s);
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'}[c]));
@@ -194,6 +195,7 @@ const venues = [
   ...entries.filter(entry => entry.data.course).map(entry => ({islet: entry, owner: entry, whole: true})),
 ].map(venue => ({...venue, scene: venueScenes[venue.islet.data.course](scene, camera)}));
 const wall = createPhotoWall($('#prints'), $('#viewer'));
+const gallery = createGallery($('#gallery'), $('#open-gallery'));
 const tour = createTour($('#tour'), wall, () => openVenue().scene);
 wall.onResize = () => { if (inCourse()) frameCamera(); };
 // Golf's arrangement. Phones keep their own automatic layout.
@@ -201,7 +203,7 @@ const savedLayout = await fetch(new URL('./golf-layout.json', import.meta.url), 
 const arrangement = createArrangement({saved: savedLayout, wall, applies: () => openVenue()?.islet.data.course === 'golf' && !tall && width > 760});
 const textEditor = createTextEditor({
   saved: textEdits,
-  isDialogOpen: () => !$('#viewer').hidden || !$('#scorecard').hidden,
+  isDialogOpen: () => gallery.open || !$('#viewer').hidden || !$('#scorecard').hidden,
   onCancel: () => {
     arrangement.clear();
     showRoute();
@@ -229,6 +231,7 @@ function onSea(nx, ny, cam = camera) {
 let tall = false, unit = 1, width = 1, height = 1;
 const layoutCam = new THREE.PerspectiveCamera();
 function layout() {
+  const wasTall = tall;
   width = innerWidth;
   height = innerHeight;
   renderer.setSize(width, height);
@@ -259,8 +262,14 @@ function layout() {
   if (!boatState.placed) { boatState.pos.copy(boatState.home); boatState.placed = true; }
   boat.scale.setScalar(unit * .72);
   if (inCourse()) {
-    wall.place(tall, openVenue().islet.data.photoSpots);
-    arrangement.apply();
+    const venue = openVenue();
+    if (wasTall !== tall) {
+      wall.close();
+      renderVenue(venue.islet.data, venue.owner.data);
+    } else {
+      wall.place(tall, venue.islet.data.photoSpots);
+      arrangement.apply();
+    }
   }
   frameCamera(true);
 }
@@ -701,6 +710,7 @@ function showRoute() {
   textEditor.refresh();
 }
 function applyRoute() {
+  gallery.close();
   wall.close();
   scorecard.hidden = true;
   const [id, isletId] = location.hash.replace(/^#\/?/, '').split('/');
@@ -712,6 +722,7 @@ function applyRoute() {
   openIslet = islet ? islet.id : null;
   zoomed = !!data?.islets && !islet;
   const venuePage = islet?.course ? islet : data?.course ? data : null;
+  gallery.setPlace(venuePage);
   document.body.classList.toggle('course', !!venuePage);
   document.body.classList.toggle('candle-page', data?.course === 'display');
   document.body.classList.toggle('society-page', islet?.course === 'society');

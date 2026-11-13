@@ -3,6 +3,14 @@ import {places} from '../dist/city-content.js';
 
 const place = id => places.find(p => p.id === id);
 
+// Cross-category photos keep their original full image and a small floating print.
+const archivePhoto = (id, caption) => ({
+  id,
+  src: `../dist/assets/media/images/${id}.jpg`,
+  print: `../dist/assets/media/images/${id}-thumb.jpg`,
+  caption,
+});
+
 // A project can take a whole place, or only some of its pages when one place splits across islets.
 const project = (id, overrides = {}) => {
   const p = place(id);
@@ -45,7 +53,7 @@ export const ISLANDS = [
       story: {
         finish: 'Meet the glasses ↓',
         moments: [
-          {heading: 'Guizhou', photos: [{caption: 'Guizhou, summer 2024.'}], text: 'In the summer of 2024, an experience in Guizhou changed my outlook on service and empathy. As an assistant tutor in this mountainous region of China, I spent three weeks supporting students with their homework and helping teachers plan lessons.'},
+          {heading: 'Guizhou', photos: [archivePhoto('daycare-photo-014', 'A classroom lesson from my volunteer-teaching visit.')], text: 'In the summer of 2024, an experience in Guizhou changed my outlook on service and empathy. As an assistant tutor in this mountainous region of China, I spent three weeks supporting students with their homework and helping teachers plan lessons.'},
           {heading: 'Wei', photos: [{caption: 'Wei, whose name I’ve changed.'}], text: 'Most importantly, I met a friend who changed my perspective on life. Wei, whose name I’ve changed here to protect his privacy, was a teenager my age, but cataracts had left him blind since birth. His parents left him with his eighty-six-year-old grandfather in a wooden hut. I visited frequently while I was there. During our conversations, he expressed his strong desire to be educated and, one day, earn money for his grandfather. However, his present conditions made this feel impossible to him.'},
           {heading: 'What I got wrong', text: 'I considered offering him some Braille books to support his education, but he had not received formal Braille instruction. I felt guilty for my ignorance.'},
           {heading: 'The glasses', text: 'Months after the Guizhou experience, I started a project to design AI-supported glasses for visually impaired children, which they could wear to identify objects and read. As the project grew and I listened to more of the people who would use it, the glasses also became a way to navigate: to find your way and ask what’s in front of you.'},
@@ -135,11 +143,11 @@ export const ISLANDS = [
         id: 'city', course: 'daqing', media: 'city', face: 'surprised', name: 'Rise and Decline', tagline: 'A documentary on the oil city of Daqing',
         why: 'Listening to an oil city, then making its story visible.',
         photos: [
-          // Waiting for the finished documentary and pictures from the screening. The film gets the largest spot.
-          {empty: true, slot: 'Film to add', caption: 'The final film.'},
+          // Supplied fieldwork photos and recordings; the finished film and screening photos are not in the archive.
+          'city-photo-021',
           'city-photo-023', 'city-photo-113', 'city-photo-022', 'city-film-01',
           'city-film-02',
-          {empty: true, caption: 'The screening.'},
+          'city-photo-114',
         ],
         phonePhotos: [0, 5, 6],
         captions: {city_film_02_mp4: 'Behind the camera.', city_photo_023_jpg: 'Listening to a local story.', city_photo_113_jpg: 'A pumpjack in Daqing.', city_photo_022_jpg: 'At the oilfield.', city_film_01_mp4: 'Filming on location.'},
@@ -197,17 +205,17 @@ export const ISLANDS = [
     id: 'arts', face: 'laugh', name: 'Arts & Music', tagline: 'Violin, voice and the stage',
     color: '#f8bfca', symbol: 'music', layout: {wide: [-.64, -.42], tall: [.5, -.1]},
     islets: [
-      // Collage pages with spaces for photos and videos, waiting for real ones. Words from the old site, in first person.
+      // Supplied performance photographs and recordings, grouped by discipline.
       {
-        id: 'violin', course: 'violin', face: 'wink', name: 'Violin', tagline: 'Orchestra and section leading',
+        id: 'violin', course: 'violin', media: 'council', face: 'wink', name: 'Violin', tagline: 'Orchestra and section leading',
         why: 'Listen across the orchestra.',
         photos: [
-          {empty: true, caption: 'Lawrenceville orchestra.'},
-          {empty: true, caption: 'Dulwich orchestra.'},
-          {empty: true, slot: 'Video to add', caption: 'Solo recording.'},
-          {empty: true, caption: 'Leading the second violins.'},
-          {empty: true, caption: 'MADD festival.'},
-          {empty: true, slot: 'Video to add', caption: 'Ensemble recording.'},
+          'council-photo-081',
+          'council-photo-084',
+          'council-film-11',
+          'council-photo-086',
+          'council-photo-089',
+          'council-film-09',
         ],
         phonePhotos: [0, 2, 4],
         // Music stands, staggered so they read as a little orchestra pit rather than a column.
@@ -228,11 +236,11 @@ export const ISLANDS = [
         why: 'A song, and the people around it.',
         photos: [
           'council-film-02',
-          {empty: true, caption: 'Singing competition.'},
-          {empty: true, slot: 'Video to add', caption: 'Competition performance.'},
-          {empty: true, caption: 'With the band.'},
-          {empty: true, caption: 'Singing at home.'},
-          {empty: true, slot: 'Video to add', caption: 'Music at home.'},
+          'council-photo-036',
+          'council-film-05',
+          'council-photo-037',
+          'council-photo-032',
+          'council-film-03',
         ],
         phonePhotos: [0, 1, 4],
         captions: {council_film_02_mp4: 'Singing with the band at Karaoke Night.'},
@@ -245,15 +253,15 @@ export const ISLANDS = [
         rankings: [],
       },
       {
-        id: 'theatre', course: 'theatre', face: 'surprised', name: 'Theatre', tagline: 'A Macbeth musical on stage',
+        id: 'theatre', course: 'theatre', media: 'arts', face: 'surprised', name: 'Theatre', tagline: 'A Macbeth musical on stage',
         why: 'Macbeth, on stage.',
         photos: [
-          {empty: true, caption: 'Macbeth on stage.'},
-          {empty: true, caption: 'Rehearsal.'},
-          {empty: true, slot: 'Video to add', caption: 'The performance.'},
-          {empty: true, caption: 'Backstage.'},
-          {empty: true, caption: 'The cast.'},
-          {empty: true, caption: 'Curtain call.'},
+          'arts-photo-074',
+          'arts-photo-075',
+          'arts-photo-073',
+          'arts-photo-076',
+          'arts-photo-078',
+          'arts-photo-077',
         ],
         phonePhotos: [0, 2, 5],
         photoSpots: COLUMN_SPOTS,
@@ -508,7 +516,7 @@ export const ISLANDS = [
   },
 ];
 
-// Smaller extras in the same sea. Their pages are placeholders until the real text arrives.
+// Smaller extras in the same sea.
 export const EXTRAS = [
   {
     id: 'about', course: 'about', face: 'wink', name: 'About', tagline: 'Who is Niki?', small: true,
@@ -519,8 +527,17 @@ export const EXTRAS = [
       {id: 'me', name: 'About me', text: 'Hi, I’m Niki. I’m originally from Beijing and now a student at The Lawrenceville School. I like taking a question apart and building something that answers it: maps of how two cities grew apart, glasses that help blind people find their way, candles that give back to a forest.'},
       {id: 'hobbies', name: 'Hobbies', text: 'Away from school, I play golf with my team, spend time with the kids at the kindergarten and cook.'},
     ],
-    // Spaces for photos, waiting for real pictures.
-    photos: ['Golf', 'Kindergarten', 'Cooking', 'Daily life', 'Friends', 'Family', 'Travel', 'Beijing'].map(name => ({empty: true, caption: `${name}.`})),
+    // Everyday moments from the supplied activity and family archive.
+    photos: [
+      archivePhoto('golf-photo-039', 'Practicing on the golf course.'),
+      archivePhoto('daycare-photo-097', 'Reading together at daycare.'),
+      archivePhoto('wellness-photo-035', 'Baking together in the kitchen.'),
+      archivePhoto('wellness-photo-031', 'A game around the table.'),
+      archivePhoto('culture-photo-110', 'Lion-dance costumes at a Chinese Society celebration.'),
+      archivePhoto('council-photo-032', 'Sharing music at home.'),
+      archivePhoto('football-photo-091', 'A school football-team photograph.'),
+      archivePhoto('arts-photo-073', 'An evening at the theatre.'),
+    ],
     phonePhotos: [0, 1, 2],
     // Notes down the left, the lighthouse in the middle, photos in a grid on the right.
     photoSpots: {wide: [[.775, .25], [.905, .27], [.78, .52], [.91, .54], [.775, .79], [.905, .8], [.095, .83], [.235, .84]], tall: [[.17, .25], [.5, .25], [.83, .25]], notesWide: [[.165, .15], [.165, .46]], notesTall: [[.28, .6], [.72, .6]]},

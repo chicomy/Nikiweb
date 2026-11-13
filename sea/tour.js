@@ -168,9 +168,9 @@ export function createTour(root, wall, scene) {
 
   return {
     show(islet, base, photos) {
-      const {parts, how, tabs, story, placeholders} = islet.tour;
+      const {parts, how, tabs, story} = islet.tour;
       // Real pictures come first, so a card's number is also its place in the viewer.
-      items = [...photos, ...placeholders.map((slot, i) => ({...slot, empty: true, textPath: `${base}.tour.placeholders.${i}.caption`}))];
+      items = photos;
       root.hidden = false;
       root.innerHTML = `
         <div class="tour-switch" id="tour-switch">
@@ -181,7 +181,7 @@ export function createTour(root, wall, scene) {
           ${story.moments.map((item, i) => `<div class="moment">
             <h2 data-text="${base}.tour.story.moments.${i}.heading">${esc(item.heading)}</h2>
             <p data-text="${base}.tour.story.moments.${i}.text">${esc(item.text)}</p>
-            ${item.photos ? `<div class="snaps">${item.photos.map((photo, k) => `<figure class="polaroid snap empty"><div class="polaroid-photo"><span>Photo to add</span></div><figcaption data-text="${base}.tour.story.moments.${i}.photos.${k}.caption">${esc(photo.caption)}</figcaption></figure>`).join('')}</div>` : ''}
+            ${item.photos?.some(photo => photo.src) ? `<div class="snaps">${item.photos.map((photo, k) => photo.src ? `<figure class="polaroid snap"><div class="polaroid-photo"><img src="${esc(photo.src)}" alt="${esc(photo.caption)}" loading="lazy"></div><figcaption data-text="${base}.tour.story.moments.${i}.photos.${k}.caption">${esc(photo.caption)}</figcaption></figure>` : '').join('')}</div>` : ''}
           </div>`).join('')}
           <button class="tool story-finish" id="story-finish" type="button" data-text="${base}.tour.story.finish">${esc(story.finish)}</button>
         </section>

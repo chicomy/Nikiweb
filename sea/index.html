@@ -19,6 +19,7 @@
     <a class="pill back" id="back" href="#/">← Back to the sea</a>
   </div>
   <nav class="bar-tools" aria-label="Site">
+    <button id="open-gallery" class="pill" type="button" hidden>Gallery</button>
     <button id="edit-text" class="pill" type="button">Edit text</button>
     <button id="text-cancel" class="pill" type="button">Cancel</button>
     <button id="text-save" class="pill pill-strong" type="button">Save</button>
@@ -70,6 +71,19 @@
 </div>
 
 <div class="fade" id="fade"></div>
+
+<dialog id="gallery" class="gallery" aria-labelledby="gallery-title">
+  <div class="gallery-header">
+    <div><h2 id="gallery-title">Gallery</h2><p class="gallery-count"></p></div>
+    <button class="round" type="button" data-close aria-label="Close gallery">×</button>
+  </div>
+  <div class="gallery-grid"></div>
+  <section class="gallery-detail" hidden aria-label="Photo or film">
+    <div class="gallery-controls"><button class="pill" type="button" data-overview>← All photos & films</button><span class="gallery-position" aria-live="polite"></span></div>
+    <figure><img alt=""><video controls playsinline preload="none" hidden></video><figcaption></figcaption></figure>
+    <div class="gallery-controls"><button class="pill" type="button" data-prev>← Previous</button><button class="pill" type="button" data-next>Next →</button></div>
+  </section>
+</dialog>
 
 <script type="module" src="./sea.js"></script>
 </body>

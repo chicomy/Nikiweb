@@ -6,6 +6,8 @@ Live website: [niki.ing](https://niki.ing). Source repository: [chicomy/Nikiweb]
 
 The current homepage is **Niki's Sea**, the island portfolio in `sea/`. Run `python3 sea/dev-server.py` and open http://127.0.0.1:4175/sea/ for local preview, including **Edit text** and saving to `sea/text-edits.json`. The editor is hidden on public hosts. The city version described below remains in `dist/` and supplies shared models, media, fonts and libraries to the sea.
 
+Each island's **Gallery** opens its complete photos and films, including on phones. See `media/README-images.md` for the source audit, destination counts and the remaining unavailable photographs. Run `node media/audit-sea-media.mjs` to verify that every retained archived item stays accessible.
+
 The repository includes the complete website in `dist/`, Cloudflare deployment configuration, a local preview server, and model-generation scripts. Original source media, media inventories, editable `.blend` files, backups, build logs, and preview renders remain local authoring materials; they are not required to run or deploy the website. The model-generation scripts can recreate the editable Blender scenes.
 
 ## Run locally
@@ -107,7 +109,9 @@ The login command is only needed when no valid Cloudflare session is available. 
 
 Each published file must remain below Cloudflare's 25 MiB static asset limit. `council-film-02.mp4` has a deployment-sized H.264 derivative with its original duration, resolution and audio preserved; its previous web derivative is retained in the ignored `media/backup/` directory. Wrangler checks file sizes before uploading. Videos load on demand and use HTTP byte ranges for seeking.
 
-Sea deployment on 2026-11-12 (Asia/Shanghai): version `0a6d49bb-ea9f-47b9-9846-7be8d09cc0d7`. The homepage is now Niki's Sea. Backup address: https://niki-world.pathfive.workers.dev. Fourteen local and sixteen production HTTP checks passed, covering byte-identical HTML, scripts, styles, font, images and a GLB, both video paths returning the exact requested 1 KiB with HTTP 206, expected 404 responses, and the backup homepage. Full browser interaction verification was limited by preview-tool timeouts.
+Media gallery deployment on 2026-11-13 (Asia/Shanghai): version `4dbe1b88-79a9-4af2-ac87-eb276d6a1f20`. Restored existing photos and recordings to the sea pages, added complete per-topic galleries, and fixed portrait/landscape photo selection. Native Chrome checks verified desktop and phone galleries, photo enlargement, keyboard navigation, About orientation changes, the volunteer-teaching story photo, and the published Theatre gallery. `media/README-images.md` records the source inventory and remaining unavailable material.
+
+Initial sea deployment on 2026-11-12 (Asia/Shanghai): version `0a6d49bb-ea9f-47b9-9846-7be8d09cc0d7`. Backup address: https://niki-world.pathfive.workers.dev. Fourteen local and sixteen production HTTP checks passed, covering byte-identical HTML, scripts, styles, font, images and a GLB, both video paths returning the exact requested 1 KiB with HTTP 206, expected 404 responses, and the backup homepage.
 
 Previous city deployment on 2026-11-02 (Asia/Shanghai): version `55d9d239-a09f-4f35-8145-4279d4b87292`.
 
