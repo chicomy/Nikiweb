@@ -1,6 +1,7 @@
 // Printed photos resting in the sea around a place, in fixed spots. Click one to see it large. Story cards can be dragged.
 import {imageMedia} from '../dist/media-images.js';
 import {videoMedia} from '../dist/media-videos.js';
+import {createPhotoLoader} from './photo-loader.js';
 
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'}[c]));
 
@@ -29,6 +30,7 @@ function notesAt(tall, spots) {
 }
 
 export function createPhotoWall(layer, viewer) {
+  const photo = createPhotoLoader(viewer.querySelector('img'));
   let notes = [], items = [], current = -1, opener = null, held = null, moved = false;
   // Live position and drift of each print, as fractions of the screen.
   let floats = [];
@@ -102,6 +104,7 @@ export function createPhotoWall(layer, viewer) {
   const close = () => {
     if (current < 0) return;
     current = -1;
+    photo.clear();
     stopFilm();
     viewer.hidden = true;
     opener?.focus({preventScroll: true});
@@ -111,17 +114,16 @@ export function createPhotoWall(layer, viewer) {
     // Empty spots have nothing to show, so browsing goes past them.
     while (items[current].empty) current = (current + step + items.length) % items.length;
     const item = items[current];
-    const image = viewer.querySelector('img'), film = viewer.querySelector('video');
+    const film = viewer.querySelector('video');
     stopFilm();
-    image.hidden = !!item.film;
     film.hidden = !item.film;
     if (item.film) {
+      photo.clear();
       film.poster = item.print;
       film.src = item.src;
       film.play().catch(() => {});
     } else {
-      image.src = item.src;
-      image.alt = item.caption;
+      photo.show(item.src, item.caption);
     }
     const caption = viewer.querySelector('figcaption');
     caption.dataset.text = item.textPath;

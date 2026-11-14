@@ -1,4 +1,5 @@
 import {galleryItems} from './gallery-media.js';
+import {createPhotoLoader} from './photo-loader.js';
 
 const esc = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'}[c]));
 
@@ -7,10 +8,11 @@ export function createGallery(dialog, button) {
   let items = [], selected = -1, opener = null, thumbnail = null;
   const grid = dialog.querySelector('.gallery-grid');
   const detail = dialog.querySelector('.gallery-detail');
-  const image = detail.querySelector('img');
+  const photo = createPhotoLoader(detail.querySelector('img'));
   const film = detail.querySelector('video');
   const stopFilm = () => { film.pause(); film.removeAttribute('src'); film.load(); };
   const overview = () => {
+    photo.clear();
     stopFilm();
     selected = -1;
     detail.hidden = true;
@@ -21,14 +23,13 @@ export function createGallery(dialog, button) {
     selected = (index + items.length) % items.length;
     const item = items[selected];
     stopFilm();
-    image.hidden = !!item.film;
     film.hidden = !item.film;
     if (item.film) {
+      photo.clear();
       film.poster = item.print || item.thumb;
       film.src = item.src;
     } else {
-      image.src = item.src;
-      image.alt = item.caption || item.title || '';
+      photo.show(item.src, item.caption || item.title || '');
     }
     detail.querySelector('figcaption').textContent = item.caption || item.title || '';
     detail.querySelector('.gallery-position').textContent = `${selected + 1} / ${items.length}`;
@@ -37,6 +38,7 @@ export function createGallery(dialog, button) {
     dialog.scrollTop = 0;
   };
   const close = () => {
+    photo.clear();
     stopFilm();
     if (dialog.open) dialog.close();
   };
@@ -70,7 +72,7 @@ export function createGallery(dialog, button) {
   dialog.addEventListener('close', () => {
     stopFilm();
     grid.innerHTML = '';
-    image.removeAttribute('src');
+    photo.clear();
     opener?.focus({preventScroll: true});
   });
   addEventListener('keydown', e => {
