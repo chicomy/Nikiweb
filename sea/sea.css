@@ -480,12 +480,42 @@ button.fact span { font-weight: 700; }
 .viewer video { display: block; width: min(1000px, 100%); max-height: calc(100vh - 110px); border-radius: 3px; background: #06283a; }
 .viewer [hidden] { display: none; }
 .photo-status {
-  display: grid; place-items: center; margin: 0; padding: 24px;
+  display: grid; grid-template-columns: minmax(0, 1fr);
+  place-content: center; justify-items: center; gap: 18px;
+  margin: 0; padding: 24px;
   width: min(640px, 70vw); min-height: min(360px, 45vh);
   color: var(--ink-soft); text-align: center;
 }
+.viewer .photo-status { color: #47606c; }
 .gallery .photo-status { width: 100%; }
 .photo-status[hidden] { display: none; }
+/* The same loading state drives both photo viewers; errors stay still. */
+[aria-busy='true'] > .photo-status::before,
+[aria-busy='true'] > .photo-status::after {
+  content: ''; grid-area: 1 / 1; pointer-events: none;
+}
+[aria-busy='true'] > .photo-status::before {
+  width: 112px; height: 88px; z-index: 1;
+  background: center / contain no-repeat url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 112 88'%3E%3Cpath d='M57 11v54' fill='none' stroke='%2310303f' stroke-width='3.5' stroke-linecap='round'/%3E%3Cpath d='M51 15 21 55h30Z' fill='%23ff6f59' stroke='%23fffdf6' stroke-width='3.5' stroke-linejoin='round'/%3E%3Cpath d='m63 29 24 26H63Z' fill='%23f5dfaf' stroke='%23fffdf6' stroke-width='3.5' stroke-linejoin='round'/%3E%3Cpath d='M19 65h75L83 77H32Z' fill='%230b5e86' stroke='%23fffdf6' stroke-width='3.5' stroke-linejoin='round'/%3E%3C/svg%3E");
+  filter: drop-shadow(0 3px 0 #10303f20);
+  transform-origin: 50% 85%;
+  animation: photo-boat 2.4s ease-in-out infinite;
+}
+[aria-busy='true'] > .photo-status::after {
+  align-self: end; width: 106px; height: 20px; margin-bottom: -3px;
+  border: 2px solid #16a3c666; border-radius: 50%;
+  background: #16a3c612; box-shadow: 0 0 0 7px #16a3c60a;
+  animation: photo-ripple 2.4s ease-out infinite;
+}
+@keyframes photo-boat {
+  0%, 100% { transform: translateY(0) rotate(-4deg); }
+  50% { transform: translateY(-6px) rotate(4deg); }
+}
+@keyframes photo-ripple {
+  0% { transform: scale(.72); opacity: .4; }
+  45% { opacity: .85; }
+  100% { transform: scale(1.2); opacity: .12; }
+}
 .viewer figcaption { padding-top: 9px; font-size: 15px; line-height: 1.3; color: #10303f; text-align: center; }
 .viewer .round { flex: none; width: 44px; height: 44px; background: #fffdf6; color: #10303f; }
 .viewer .viewer-close { position: absolute; top: 18px; right: 18px; font-size: 26px; }
